@@ -16,9 +16,11 @@ screen.listen()
 screen.onkey(key="Up", fun=player.move)
 
 game_is_on = True
+run_time = 1
 while game_is_on:
     time.sleep(0.1)
-    car_manager.create_car()
+    if run_time % 6 == 0:
+        car_manager.create_car()
     car_manager.move()
 
     # Detect collision with car
@@ -32,5 +34,6 @@ while game_is_on:
         car_manager.increase_speed()
 
     screen.update()
+    run_time += 1
 
 screen.exitonclick()
